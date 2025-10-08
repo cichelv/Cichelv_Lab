@@ -39,4 +39,9 @@ resource "google_compute_instance" "vm" {
     scopes = each.value.service_account.scopes
   }
 }
+resource "google_project_service" "enabled_services" {
+  for_each = toset(var.gcp_services_list)
+  project  = var.project_id
+  service  = each.key
+}
 
