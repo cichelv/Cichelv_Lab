@@ -4,9 +4,9 @@ output "vm_names" {
     k => vm.name
   }
 }
-output "vm_public_ips" {
+output "vm_private_ip" {
   value = {
     for k, vm in google_compute_instance.vm :
-    trimsuffix(k, ".json") => vm.network_interface[0].access_config[0].nat_ip
+    trimsuffix(k, ".json") => vm.network_interface[0].network_ip
   }
 }
