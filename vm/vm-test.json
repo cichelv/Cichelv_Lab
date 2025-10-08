@@ -1,12 +1,10 @@
 {
   "name": "vm-test",
-  "type": "zonale",
   "zone": "us-central1-c",
   "machine_type": "e2-small",
-  "image": "debian-12-bookworm-v20250910",
-  "network": "default",
   "tags": ["debian", "lab", "http-server", "https-server"],
   "boot_disk": {
+    "image": "debian-12-bookworm-v20250910",
     "size": 10,
     "type": "pd-balanced"
   },

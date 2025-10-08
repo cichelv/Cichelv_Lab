@@ -1,6 +1,6 @@
 variable "project_id" {
- description = "progettocloud-473207"
- type = string
+description = "Progetto"
+type = string
 default = "progettocloud-473207"
 }
 
@@ -11,9 +11,9 @@ variable "region" {
 }
 
 variable "zone" {
- description = "Zona GCP"
+description = "Zona GCP"
  type = string
- default = "us-central1-c"
+default = "us-central1-c"
 }
 
 variable "credential" {
@@ -27,4 +27,3 @@ variable "mail" {
  type = string
  default = "1075799113945-compute@developer.gserviceaccount.com"
 }
-

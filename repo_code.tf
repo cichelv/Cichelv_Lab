@@ -1,29 +1,42 @@
+variable "config_path" {
+  description = "Percorso dei file JSON"
+  type        = string
+  default     = "vm"
+}
 
 locals {
-  vms = {
-    for file_path in fileset("${path.module}/vm", "**/*.json") :
-    trimsuffix(basename(file_path), ".json") => jsondecode(file(file_path))
+  config_files = fileset(var.config_path, "*.json")
+  configs = {
+    for file in local.config_files :
+    file => jsondecode(file("${var.config_path}/${file}"))
   }
 }
 
+resource "google_compute_instance" "vm" {
+  for_each = local.configs
 
+  name         = each.value.name
+  machine_type = each.value.machine_type
+  zone         = each.value.zone
+  tags         = each.value.tags
+  labels       = each.value.labels
 
-module "virtual_machine" {
-  source   = "git::https://github.com/cichelv/Cichelv_Lab.git"
-  for_each = {
-    for k, v in local.vms : k => v
-    if lower(v.type) == "zonale"
+  boot_disk {
+    initialize_params {
+      image = each.value.boot_disk.image
+      size  = each.value.boot_disk.size
+      type  = each.value.boot_disk.type
+    }
   }
 
-  name              = each.value.name
-  zone              = each.value.zone
-  machine_type      = each.value.machine_type
-  image             = each.value.image
-  network           = each.value.network
-  tags              = each.value.tags
-  boot_disk         = each.value.boot_disk
-  labels            = each.value.labels
-  service_account   = each.value.service_account
-  network_interface = each.value.network_interface
+  network_interface {
+    network       = each.value.network_interface.network
+    access_config  {}
+  }
+
+  service_account {
+    email  = each.value.service_account.email
+    scopes = each.value.service_account.scopes
+  }
 }
 
