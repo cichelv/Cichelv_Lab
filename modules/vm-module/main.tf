@@ -1,30 +1,26 @@
 resource "google_compute_instance" "default" {
-  name = var.vm_name
+  name         = var.vm_name
   machine_type = var.machine_type
-  zone = var.zone
-  region = var.region
+  zone         = var.zone
+
   boot_disk {
-   initialize_params {
-    image  = var.vm_image
-    size   = var.boot_size
-    type   = var.boot_type 
-}
-}
-  labels = {
-
-
-    zone   = var.zone
-    os     = var.vm_image
-    
+    initialize_params {
+      image = var.vm_image 
+      size = var.boot_size
+      type = var.boot_type
+    }
   }
- 
-    network_interface {
-   network       = var.network
+  
+  network_interface {
+    network = var.network
+    access_config {
+    }
   }
+
   service_account {
-   access_config {}
-    email  = var.email_service_account
+    email = var.email_service_account
     scopes = [var.scopes]
+
   }
 }
 
