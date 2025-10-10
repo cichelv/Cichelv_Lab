@@ -8,7 +8,7 @@ resource "google_compute_instance" "default" {
     size   = var.boot_size
     type   = var.boot_type 
 }
-  labels {
+  labels = {
     zone   = var.zone
     os     = var.vm_image
     
@@ -16,9 +16,9 @@ resource "google_compute_instance" "default" {
  
     network_interface {
    network       = var.network
-   access_config = var.access_config
   }
   service_account {
+   access_config {}
     email  = var.email_service_account
     scopes = [var.scopes]
   }
