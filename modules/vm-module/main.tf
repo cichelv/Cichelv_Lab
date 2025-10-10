@@ -3,11 +3,10 @@ resource "google_compute_instance" "default" {
   machine_type = var.machine_type
 
   boot_disk {
-     initialize_params {
+ 
     image  = var.vm_image
     size   = var.boot_size
-    type   = var.boot_type
-  } 
+    type   = var.boot_type 
 },
   labels {
     zone   = var.zone
