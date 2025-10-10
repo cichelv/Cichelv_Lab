@@ -1,7 +1,6 @@
 
 variable "project_id" {}
 variable "zone" {}
-variable "region" {}
 variable "vm_name" {}
 variable "machine_type" {}
 variable "vm_image" {}
