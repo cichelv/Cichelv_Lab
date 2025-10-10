@@ -1,5 +1,5 @@
 resource "google_compute_instance" "default" {
-  name         = var.vm_name
+  name = "vm-${var.zone}-${var.vm_name}"
   machine_type = var.machine_type
 
   boot_disk {
