@@ -1,7 +1,7 @@
 variable "vm_name" {
   type        = string
   description = "VM name"
-  default = "${var.application}-${var.project_id}"
+  default = "${var.zone}-${var.project_id}"
 }
 
 variable "region" {
