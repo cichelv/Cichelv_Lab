@@ -1,7 +1,7 @@
 variable "vm_name" {
   type        = string
   description = "VM name"
-  default     = "vm"
+  default     = "svil"
 }
 
 
