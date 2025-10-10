@@ -18,7 +18,7 @@ resource "google_compute_instance" "default" {
    network       = var.network
    access_config = var.access_config
   },
-  service_account: {
+  service_account {
     email  = var.email_service_account
     scopes = [var.scopes]
   }
