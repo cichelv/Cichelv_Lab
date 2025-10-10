@@ -1,29 +1,85 @@
-variable "project_id" {
-description = "Progetto"
-type = string
-default = "progettocloud-473207"
+variable "vm_name" {
+  type        = string
+  description = "VM name"
+  default = "${var.application}-${var.project_id}"
 }
 
 variable "region" {
- description = "Regione GCP"
- type = string
- default = "us-central1"
+  type        = string
+  description = "Regione GCP"
+  default     = "us-central1"
 }
 
 variable "zone" {
-description = "Zona GCP"
- type = string
-default = "us-central1-c"
+  type        = string
+  description = "VM zone"
+  default     = "us-central1-c"
 }
 
-variable "credential" {
- description = "Percorso al file di credenziali JSON"
- type = string
- default = "/home/cichshirt/terraform/credentials/gcp-key.json"
+variable "machine_type" {
+  type        = string
+  description = "Taglio VM"
+  default     = "e2-small"
 }
- 
-variable "mail" {
- description = "service_account_mail"
- type = string
- default = "1075799113945-compute@developer.gserviceaccount.com"
+
+variable "project_id" {
+  type        = string
+  description = "ID del progetto GCP"
+  default     = "progettocloud-473207"
+}
+
+variable "tags" {
+  type        = list(string)
+  description = "VM Tags"
+  default     = []
+}
+
+variable "vm_image" {
+  type        = string
+  description = "Immagine della VM"
+}
+
+variable "boot_size" {
+  type        = number
+  description = "Dimensione del disco di boot in GB"
+}
+
+variable "boot_type" {
+  type        = string
+  description = "Tipo di disco di boot (es. pd-standard, pd-ssd)"
+}
+
+variable "network" {
+  type        = string
+  description = "Nome della rete"
+  default     = "default"
+}
+
+
+variable "access_config" {
+  type        = any
+  description = "Configurazione accesso (es. NAT)"
+  default     = {}
+}
+
+variable "email_service_account" {
+  type        = string
+  description = "Email del service account"
+  default     = "1075799113945-compute@developer.gserviceaccount.com"
+}
+
+variable "gcp_services_list" {
+
+  type        = list(string)
+  description = "Servizi GCP da abilitare"
+  default     = [
+    "compute.googleapis.com",
+    "iam.googleapis.com"
+  ]
+}
+
+variable "scopes"{
+    description = "Servizi GCP da abilitare"
+    type        = any
+    default     = "https://www.googleapis.com/auth/cloud-platform"
 }
