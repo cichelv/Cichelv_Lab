@@ -58,12 +58,6 @@ variable "network" {
 }
 
 
-variable "access_config" {
-  type        = any
-  description = "Configurazione accesso (es. NAT)"
-  default     = {}
-}
-
 variable "email_service_account" {
   type        = string
   description = "Email del service account"
