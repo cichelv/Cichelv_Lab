@@ -4,12 +4,15 @@ resource "google_compute_instance" "default" {
   zone = var.zone
   region = var.region
   boot_disk {
- 
+   initialize_params {
     image  = var.vm_image
     size   = var.boot_size
     type   = var.boot_type 
 }
+}
   labels = {
+
+
     zone   = var.zone
     os     = var.vm_image
     
