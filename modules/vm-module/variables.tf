@@ -1,12 +1,10 @@
 variable "vm_name" {
   type        = string
   description = "VM name"
-  default = null
+  default = "vm-${var.zone}"
 }
 
-locals {
-  composed_vm_name = var.vm_name != null ? var.vm_name : "${var.zone}-${var.project_id}"
-}
+
 
 variable "region" {
   type        = string
