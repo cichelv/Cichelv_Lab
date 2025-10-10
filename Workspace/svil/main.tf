@@ -1,6 +1,6 @@
-module "vm-module" {
 
-source = "https://github.com/cichelv/Cichelv_Lab/tree/Template/modules/vm-module"
+module "vm-module" {
+  source = "git::https://github.com/cichelv/Cichelv_Lab.git//modules/vm-module?ref=Template"
 
 zone =var.zone
 machine_type = var.machine_type
