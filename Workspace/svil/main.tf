@@ -1,6 +1,6 @@
 
 module "vm-module" {
-  source = "git::https://github.com/cichelv/Cichelv_Lab.git//modules/vm-module?ref=Template"
+  source = "git::https://github.com/cichelv/Cichelv_Lab.git//modules/vm-module?ref=Modules"
 
 project_id             = "firm-shuttle-473207-q0"
   zone                   = "us-central1-c"
