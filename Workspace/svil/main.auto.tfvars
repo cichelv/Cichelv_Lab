@@ -1,11 +1,11 @@
 
 
-project_id = "progettocloud-473207"
+project_id = "firm-shuttle-473207-q0"
 
 region = "us-central1"
 
 zone = "us-central1-c"
 
-credential =  "/home/cichshirt/terraform/credentials/gcp-key.json"
+credential =  "/home/terraform/credentials/gcp-key.json"
 
- email_service_account = "1075799113945-compute@developer.gserviceaccount.com"
+ email_service_account = "355663382436-compute@developer.gserviceaccount.com"
