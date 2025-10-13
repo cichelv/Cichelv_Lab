@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"vm-module","Source":"git::https://github.com/cichelv/Cichelv_Lab.git//modules/vm-module?ref=Template","Dir":".terraform/modules/vm-module/modules/vm-module"}]}
